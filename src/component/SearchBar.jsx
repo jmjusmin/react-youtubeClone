@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function SearchBar() {
+function SearchBar(props) {
   const [term, setTerm] = useState('');
   const handleChange = (e) => {
     setTerm(e.target.value);
@@ -8,9 +8,10 @@ function SearchBar() {
   const handleSubmit = (e) => {
     //prevent from auto submit form
     e.preventDefault();
-
     //callback from parent component
+    props.handleTermSubmit(term);
   };
+
   return (
     <div className="search-bar ui segment">
       <form className="ui form" onSubmit={handleSubmit}>
